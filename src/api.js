@@ -30,34 +30,26 @@ async function QuerySearch(input) {
 }
 
 async function renderData(input) {
-    const exam = await QuerySearch(input);
-    const hit = exam.data.search.hits[0];
-    console.log("renderData result", hit);
+    const apiResponse = await QuerySearch(input);
+    const hit = apiResponse.data.search.hits[0];
+    console.log(hit);
     return hit;
 }
 
-async function returnUrl(input) {
+async function run(input) {
     const data = await renderData(input);
-    const id = data.id
-    const name = data.name
-    const entity = data.entity
+    const responseId = data.id
+    const responseName = data.name
+    const responseEntity = data.entity
 
-    const uri_a = "https://platform.opentargets.org/" + entity + "/" + id
-    const uri_b = "https://platform.opentargets.org/search?q=" + input + "&page=1"
+    const exactUri = "https://platform.opentargets.org/" + responseEntity + "/" + responseId
+    const fuzzyUri = "https://platform.opentargets.org/search?q=" + input + "&page=1"
 
-    const result = name == input ? uri_a : uri_b
-
-    console.log("returnUrl result", result)
-    return result;
-
-}
-
-async function main(input) {
-    const response = await renderData(input);
-    const result = await returnUrl(response);
-    console.log("main result", result);
+    const result = responseName == input ? exactUri : fuzzyUri;
+    console.log(result);
     return result;
 }
 
 const input = 'PCSK9';
-returnUrl(renderData(input), input);
+
+run(input);

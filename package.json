@@ -21,9 +21,7 @@
     }
   ],
   "dependencies": {
-    "@raycast/api": "^1.42.2",
-    "graphql": "^16.6.0",
-    "@apollo/client": "^3.7.1"
+    "@raycast/api": "^1.42.2"
   },
   "devDependencies": {
     "@types/node": "18.8.3",
