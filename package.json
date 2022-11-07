@@ -1,27 +1,22 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "test",
-  "title": "Test",
-  "description": "",
+  "name": "open_targets",
+  "title": "Open Targets",
+  "description": "An entry point to the Open Targets ecosystem.",
   "icon": "command-icon.png",
   "author": "ireneisdoomed",
   "license": "MIT",
   "commands": [
     {
-      "name": "hello-word",
-      "title": "hello word",
-      "description": "",
-      "mode": "view"
-    },
-    {
-      "name": "second",
-      "title": "second",
-      "description": "",
+      "name": "command_test",
+      "title": "Test",
+      "description": "A command to test the utility.",
       "mode": "view"
     }
   ],
   "dependencies": {
-    "@raycast/api": "^1.42.2"
+    "@raycast/api": "^1.42.2",
+    "node-fetch": "^3.2.10"
   },
   "devDependencies": {
     "@types/node": "18.8.3",

@@ -1,4 +1,6 @@
-async function QuerySearch(input) {
+import fetch from 'node-fetch';
+
+async function QuerySearch(input: string) {
     try {
         const response = await fetch('https://api.platform.opentargets.org/api/v4/graphql', {
             method: 'POST',
@@ -29,15 +31,14 @@ async function QuerySearch(input) {
     }
 }
 
-async function renderData(input) {
-    const apiResponse = await QuerySearch(input);
-    console.log(typeof apiResponse);
+async function renderData(input: string) {
+    const apiResponse= await QuerySearch(input);
     const hit = apiResponse.data.search.hits[0];
     console.log(hit);
     return hit;
 }
 
-async function run(input) {
+export async function run(input: string) {
     const data = await renderData(input);
     const responseId = data.id
     const responseName = data.name
@@ -51,6 +52,6 @@ async function run(input) {
     return result;
 }
 
-const input = 'PCSK9';
+// const input = 'PCSK9';
 
-run(input);
+// run(input);
