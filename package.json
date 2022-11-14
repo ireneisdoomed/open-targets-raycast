@@ -2,16 +2,24 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "open_targets",
   "title": "Open Targets",
-  "description": "An entry point to the Open Targets ecosystem.",
-  "icon": "command-icon.png",
+  "description": "An (unofficial) entry point to the Open Targets ecosystem.",
+  "icon": "ot-icon.png",
   "author": "ireneisdoomed",
   "license": "MIT",
   "commands": [
     {
-      "name": "command_test",
-      "title": "Test",
-      "description": "A command to test the utility.",
-      "mode": "view"
+      "name": "platform",
+      "title": "Search the Platform",
+      "description": "Use the search function within Raycast to have a more inmediate access to the Open Targets Platform.",
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "input",
+          "placeholder": "Enter a term",
+          "type": "text",
+          "required": true
+        }
+      ]
     }
   ],
   "dependencies": {

@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-async function QuerySearch(input: string) {
+async function QuerySearch(input: string): Promise<any> {
     try {
         const response = await fetch('https://api.platform.opentargets.org/api/v4/graphql', {
             method: 'POST',
@@ -31,27 +31,21 @@ async function QuerySearch(input: string) {
     }
 }
 
-async function renderData(input: string) {
-    const apiResponse= await QuerySearch(input);
-    const hit = apiResponse.data.search.hits[0];
-    console.log(hit);
+async function renderData(input: string): Promise<any> {
+    const apiResponse = await QuerySearch(input);
+    const hit = apiResponse.data.search.hits;
     return hit;
 }
 
 export async function run(input: string) {
     const data = await renderData(input);
-    const responseId = data.id
-    const responseName = data.name
-    const responseEntity = data.entity
+    const result = data.map((item: any) => {
 
-    const exactUri = "https://platform.opentargets.org/" + responseEntity + "/" + responseId
-    const fuzzyUri = "https://platform.opentargets.org/search?q=" + input + "&page=1"
-
-    const result = responseName == input ? exactUri : fuzzyUri;
-    console.log(result);
+        const { id, name, entity } = item;
+        
+        const url =`https://platform.opentargets.org/${entity}/${id}`
+    
+       return {id, name, url, entity};
+    });
     return result;
 }
-
-// const input = 'PCSK9';
-
-// run(input);
