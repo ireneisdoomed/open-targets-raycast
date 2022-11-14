@@ -43,7 +43,7 @@ export async function run(input: string) {
 
         const { id, name, entity } = item;
         
-        const url =`https://platform.opentargets.org/${entity}/${id}`
+        const url =`https://platform.opentargets.org/${entity}/${id}/associations`
     
        return {id, name, url, entity};
     });
