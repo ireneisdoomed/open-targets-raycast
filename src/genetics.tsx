@@ -1,5 +1,5 @@
 import { Action, ActionPanel, Icon, List } from '@raycast/api'
-import { runPlatform } from './api';
+import { runGenetics } from './api';
 import { useEffect, useState } from "react";
 
 export default function sCommand({arguments : {input = ""}}: {arguments: {input: string}}) {
@@ -10,7 +10,7 @@ export default function sCommand({arguments : {input = ""}}: {arguments: {input:
 
   useEffect(() => {
     async function fetchData() {
-      const response = await runPlatform(lower_input)
+      const response = await runGenetics(lower_input)
       setState(response);
     }
 
@@ -18,11 +18,11 @@ export default function sCommand({arguments : {input = ""}}: {arguments: {input:
   }, []);
 
   return (
-    <List searchBarPlaceholder="Search for a gene, disease, or drug...">≥
+    <List searchBarPlaceholder='Search for a variant, gene, or study...'>≥
       {(state).map((item : any) => (
         <List.Item
           key={item.id}
-          icon={item.entity === "target" ? Icon.Dna : item.entity === "drug" ? Icon.Pill : Icon.Heart}
+          icon={item.entity === 'target' ? Icon.Dna : item.entity === 'variant' ? Icon.Uppercase : Icon.Heart}
           title={item.name}
           actions={
             <ActionPanel>

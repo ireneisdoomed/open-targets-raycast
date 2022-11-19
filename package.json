@@ -20,6 +20,20 @@
           "required": true
         }
       ]
+    },
+    {
+      "name": "genetics",
+      "title": "Search Genetics",
+      "description": "Use the search function within Raycast to have a more inmediate access to Open Targets Genetics.",
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "input",
+          "placeholder": "Enter a term",
+          "type": "text",
+          "required": true
+        }
+      ]
     }
   ],
   "dependencies": {
