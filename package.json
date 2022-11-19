@@ -34,6 +34,18 @@
           "required": true
         }
       ]
+    },
+    {
+      "name": "genetics_docs",
+      "title": "Go to Genetics Docs",
+      "description": "Search the Open Targets Genetics documentation.",
+      "mode": "view"
+    },
+    {
+      "name": "platform_docs",
+      "title": "Go to Platform Docs",
+      "description": "Search the Open Targets Platform documentation.",
+      "mode": "view"
     }
   ],
   "dependencies": {

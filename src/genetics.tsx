@@ -1,5 +1,5 @@
 import { Action, ActionPanel, Icon, List } from '@raycast/api'
-import { runGenetics } from './api';
+import { runGenetics } from './services/api';
 import { useEffect, useState } from "react";
 
 export default function sCommand({arguments : {input = ""}}: {arguments: {input: string}}) {
