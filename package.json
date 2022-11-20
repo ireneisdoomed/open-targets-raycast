@@ -37,19 +37,34 @@
     },
     {
       "name": "genetics_docs",
-      "title": "Go to Genetics Docs",
+      "title": "Open Genetics Docs",
       "description": "Search the Open Targets Genetics documentation.",
       "mode": "view"
     },
     {
       "name": "platform_docs",
-      "title": "Go to Platform Docs",
+      "title": "Open Platform Docs",
       "description": "Search the Open Targets Platform documentation.",
       "mode": "view"
+    },
+    {
+      "name": "schemas",
+      "title": "Search data schemas",
+      "description": "Look up the schemas of the Open Targets datasets.",
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "input",
+          "placeholder": "Enter a dataset",
+          "type": "text",
+          "required": true
+        }
+      ]
     }
   ],
   "dependencies": {
     "@raycast/api": "^1.42.2",
+    "@raycast/utils": "^1.4.11",
     "node-fetch": "^3.2.10"
   },
   "devDependencies": {
