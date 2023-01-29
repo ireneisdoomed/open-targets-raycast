@@ -54,9 +54,9 @@ export interface Dataset {
 
 export const otDatasets : Dataset[] = [
     { name: "Study index (dev)", type: "genetics-dev", location: `${genetics_dev_bucket}/study-index`, schema_fields: studies_dev.fields },
-    { name: "Colocalisation (dev)", type: "genetics-dev", location: `${genetics_dev_bucket}/colocalisation`, schema_fields: colocalisation_dev.fields }, // TODO: generate
-    { name: "Study locus (dev)", type: "genetics-dev", location: `${genetics_dev_bucket}/study-locus`, schema_fields: study_locus_dev.fields }, // TODO: generate
-    { name: "Study locus overlap (dev)", type: "genetics-dev", location: `${genetics_dev_bucket}/study-locus-overlap`, schema_fields: study_locus_overlap_dev.fields }, // TODO: generate
+    { name: "Colocalisation (dev)", type: "genetics-dev", location: `${genetics_dev_bucket}/colocalisation`, schema_fields: colocalisation_dev.fields },
+    { name: "Study locus (dev)", type: "genetics-dev", location: `${genetics_dev_bucket}/study-locus`, schema_fields: study_locus_dev.fields },
+    { name: "Study locus overlap (dev)", type: "genetics-dev", location: `${genetics_dev_bucket}/study-locus-overlap`, schema_fields: study_locus_overlap_dev.fields },
     { name: "Targets (dev)", type: "genetics-dev", location: `gs://genetics_etl_python_playground/input/v2g_input/targets_correct_tss`, schema_fields: targets_dev.fields },
     { name: "Variant to gene (dev)", type: "genetics-dev", location: `${genetics_dev_bucket}/variant-to-gene`, schema_fields: v2g_dev.fields },
     { name: "Variant annotation (dev)", type: "genetics-dev", location: `${genetics_dev_bucket}/variant-annotation`, schema_fields: variant_annotation_dev.fields },
