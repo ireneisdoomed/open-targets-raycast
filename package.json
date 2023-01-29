@@ -48,18 +48,10 @@
       "mode": "view"
     },
     {
-      "name": "schemas",
+      "name": "inspect_schema",
       "title": "Search data schemas",
       "description": "Look up the schemas of the Open Targets datasets.",
-      "mode": "view",
-      "arguments": [
-        {
-          "name": "input",
-          "placeholder": "Enter a dataset",
-          "type": "text",
-          "required": true
-        }
-      ]
+      "mode": "view"
     }
   ],
   "dependencies": {
