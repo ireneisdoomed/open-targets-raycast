@@ -1,43 +1,34 @@
 import { ActionPanel, Action, List, Icon } from '@raycast/api'
 import { Dataset, otDatasets } from './ot_datasets';
 import { useCachedPromise } from '@raycast/utils';
-
-type DataType = { id: string; name: string };
-
-function DatatypeDropdown(props: { datatypes: DataType[]; onDatatypeChange: (newValue: string) => void }) {
-    const { datatypes, onDatatypeChange } = props;
-    return (
-      <List.Dropdown
-        tooltip="Select Drink Type"
-        storeValue={true}
-        onChange={(newValue) => {
-            onDatatypeChange(newValue);
-        }}
-      >
-        <List.Dropdown.Section title="Alcoholic Beverages">
-          {datatypes.map((datatypes) => (
-            <List.Dropdown.Item key={datatypes.id} title="Data type" value={datatypes.name} />
-          ))}
-        </List.Dropdown.Section>
-      </List.Dropdown>
-    );
-  }
+import { useState } from "react";
 
 export default function Command() {
     const { data, isLoading } = useCachedPromise(() => new Promise<Dataset[]>((resolve) => resolve(otDatasets)));
-    const datatypes: [] = [
-        { id: "1", name: "Platform" },
-        { id: "2", name: "Genetics" },
-        { id: "3", name: "Genetics (dev)" },
-      ];
-    const onDatatypeChange = (newValue: string) => {
-        console.log(newValue);
-      };
+    const [filter, setFilter] = useState<string>("all");
+    console.log(data)
     return (
-        <List isLoading={isLoading} isShowingDetail>
-            searchBarAccessory={<DatatypeDropdown datatypes={datatypes} onDatatypeChange={onDatatypeChange} />}
+        <List 
+            isLoading={isLoading} 
+            isShowingDetail
+            searchBarAccessory={
+                <List.Dropdown tooltip="Show posts filter" onChange={(newValue) => setFilter(newValue)}>
+                    <List.Dropdown.Item title="All" value="all" />
+                    <List.Dropdown.Item title="Platform" value="platform" />
+                    <List.Dropdown.Item title="Genetics" value="genetics" />
+                    <List.Dropdown.Item title="Genetics (dev)" value="genetics-dev" />
+                </List.Dropdown>
+            }
+            searchBarPlaceholder="Search a dataset in Open Targets..."
+        >
             {data &&
-                data.map((dataset) => {
+                data.filter((dataset) => {
+                    if (filter === "all") {
+                        return true;
+                    }
+                    return dataset.type.includes(filter);
+                })
+                .map((dataset) => {
                     return (
                             <List.Item
                                 key={dataset.name}
