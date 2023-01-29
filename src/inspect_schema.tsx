@@ -1,6 +1,8 @@
 import { ActionPanel, Action, List, Icon } from '@raycast/api'
-import { Dataset, otDatasets } from "./ot_datasets";
+import { Dataset, otDatasets } from './ot_datasets';
 import { useCachedPromise } from '@raycast/utils';
+
+// TODO: error in text when type != string
 
 export default function Command() {
     const { data, isLoading } = useCachedPromise(() => new Promise<Dataset[]>((resolve) => resolve(otDatasets)));
