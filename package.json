@@ -49,7 +49,7 @@
     },
     {
       "name": "inspect_schema",
-      "title": "Search data schemas",
+      "title": "Browse datasets",
       "description": "Look up the schemas of the Open Targets datasets.",
       "mode": "view"
     }
